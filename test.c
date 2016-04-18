@@ -65,7 +65,7 @@ int main (int argc,char** argv){
 	glutMouseFunc(mouse);
 	init();
 	glutMainLoop();
-	retur 0; 
+	return 0; 
  
  
 }
