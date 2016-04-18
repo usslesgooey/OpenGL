@@ -1,5 +1,4 @@
-#include <iostream>
-using namespace std;
+
 #include "vgl.h"
 #include "LoadShaders.h"
 enum VAO_IDs { Triangles, NumVAOs };
@@ -12,9 +11,7 @@ const GLuint NumVertices = 6;
 //
 // init
 //
-void
-init(void)
-{
+void init(void) {
 glGenVertexArrays(NumVAOs, VAOs);
 glBindVertexArray(VAOs[Triangles]);
 GLfloat vertices[NumVertices][2] = {
@@ -44,34 +41,30 @@ glEnableVertexAttribArray(vPosition);
 //
 // display
 //
-void
-display(void)
-{
-glClear(GL_COLOR_BUFFER_BIT);
-glBindVertexArray(VAOs[Triangles]);
-glDrawArrays(GL_TRIANGLES, 0, NumVertices);
-glFlush();
+void display(void) {
+    glClear(GL_COLOR_BUFFER_BIT);
+    glBindVertexArray(VAOs[Triangles]);
+    glDrawArrays(GL_TRIANGLES, 0, NumVertices);
+    glFlush();
 }
 //---------------------------------------------------------------------
 //
 // main
 //
-int
-main(int argc, char** argv)
-{
-glutInit(&argc, argv);
-glutInitDisplayMode(GLUT_RGBA);
-glutInitWindowSize(512, 512);
-glutInitContextVersion(4, 3);
-glutInitContextProfile(GLUT_CORE_PROFILE);
-glutCreateWindow(argv[0]);
-if (glewInit()) {
-cerr << "Unable to initialize GLEW ... exiting" << endl;
-exit(EXIT_FAILURE);
-}
-init();
-glutDisplayFunc(display);
-glutMainLoop();
+int main(int argc, char** argv) {
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_RGBA);
+    glutInitWindowSize(512, 512);
+    glutInitContextVersion(4, 3);
+    glutInitContextProfile(GLUT_CORE_PROFILE);
+    glutCreateWindow(argv[0]);
+    if (glewInit()) {
+        cerr << "Unable to initialize GLEW ... exiting" << endl;
+        exit(EXIT_FAILURE);
+    }
+    init();
+    glutDisplayFunc(display);
+    glutMainLoop();
 }
 
 
